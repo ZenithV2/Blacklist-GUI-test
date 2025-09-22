@@ -22,7 +22,7 @@ ImageLabel.Parent = ScreenGui
 ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(-0.140699044, 0, -0.678025007, 0)
+ImageLabel.Position = UDim2.new(-0.199200228, 0, -0.942280948, 0)
 ImageLabel.Size = UDim2.new(0, 1410, 0, 690)
 ImageLabel.Image = "rbxassetid://100304244732643"
 
@@ -31,7 +31,7 @@ TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.BackgroundTransparency = 0.970
 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.135515407, 0, 0.0243393593, 0)
+TextLabel.Position = UDim2.new(-0.024437204, 0, -0.0139082056, 0)
 TextLabel.Size = UDim2.new(0, 391, 0, 111)
 TextLabel.Font = Enum.Font.Bangers
 TextLabel.Text = "BLACKLISTED FAGGOT"
