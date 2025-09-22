@@ -11,8 +11,14 @@ frame.Position = UDim2.new(0, 0, 0, 0)
 frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 frame.BorderSizePixel = 0
 frame.BackgroundTransparency = 0
-frame.Image = "rbxassetid://96984792832353"
 frame.Parent = screenGui
+
+local image = Instance.new("ImageLabel")
+image.Size = UDim2.new(1, 0, 1, 0)
+image.Position = UDim2.new(0, 0, 0, 0)
+image.Image = "rbxassetid://96984792832353"
+image.BackgroundTransparency = 1
+image.Parent = frame
 
 local textbox = Instance.new("TextBox")
 textbox.Size = UDim2.new(0.4, 0, 0.1, 0)
@@ -34,4 +40,3 @@ input.Font = Enum.Font.Garamond
 input.TextScaled = true
 input.BorderSizePixel = 0
 input.Parent = frame
-
