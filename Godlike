@@ -29,7 +29,7 @@ ImageLabel.Parent = ScreenGui
 ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(0.0288803317, 0, 0, 0)
+ImageLabel.Position = UDim2.new(-0.065906398, 0, -0.0730180815, 0)
 ImageLabel.Size = UDim2.new(0, 1350, 0, 575)
 ImageLabel.Image = "rbxassetid://100304244732643"
 
