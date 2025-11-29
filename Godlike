@@ -1,89 +1,94 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
+-- Create the Screen GUI
 local ScreenGui = Instance.new("ScreenGui")
-local ImageLabel = Instance.new("ImageLabel")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel_2 = Instance.new("TextLabel")
-local TextBox = Instance.new("TextBox")
-local UICorner = Instance.new("UICorner")
-local TextButton = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local TextLabel_3 = Instance.new("TextLabel")
-
---Properties:
-
+ScreenGui.Name = "AUTO EAT BOOSTS MADE BY MOHA"
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+-- Create the Frame
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 300, 0, 250)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -125)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+Frame.Active = true
+Frame.Draggable = true
+Frame.Parent = ScreenGui
+-- Create the TextLabel
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Size = UDim2.new(1, 0, 0.2, 0)
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Text = "Auto EAT BOOSTS BY MOHA"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.TextSize = 24
+TextLabel.Parent = Frame
+-- Create the TextLabel
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Size = UDim2.new(1, 0, 0.2, 0)
+TextLabel.Position = UDim2.new(0, 0, 0, 0)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Text = "Auto EAT BOOSTS BY MOHA"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.TextSize = 24
+TextLabel.Parent = Frame
+-- Create the Boost selection buttons
+local Boosts = {"Protein Bar", "Ultra Shake", "Energy Bar", "Tough Bar", "Protein Shake"}
+local BoostSelections = {}
 
-ImageLabel.Parent = ScreenGui
-ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(-0.148104265, 0, -0.982267022, 0)
-ImageLabel.Size = UDim2.new(0, 1410, 0, 690)
-ImageLabel.Image = "rbxassetid://100304244732643"
+for i, boost in ipairs(Boosts) do
+    local BoostButton = Instance.new("TextButton")
+    BoostButton.Size = UDim2.new(0.8, 0, 0.15, 0)
+    BoostButton.Position = UDim2.new(0.1, 0, 0.2 + (i - 1) * 0.18, 0)
+    BoostButton.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
+    BoostButton.Text = boost
+    BoostButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    BoostButton.Font = Enum.Font.SourceSans
+    BoostButton.TextSize = 18
+    BoostButton.Parent = Frame
+    
+    BoostButton.MouseButton1Click:Connect(function()
+        if BoostSelections[boost] then
+            BoostSelections[boost] = nil
+            BoostButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        else
+            BoostSelections[boost] = true
+            BoostButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        end
+    end)
+end
+-- Function to auto consume selected boosts
+local function autoConsumeBoosts()
+    while true do
+        wait(1) -- Adjust the wait time as needed
+        local player = game.Players.LocalPlayer
+        local backpack = player.Backpack
+        for _, item in pairs(backpack:GetChildren()) do
+            if BoostSelections[item.Name] then
+                player.Character.Humanoid:EquipTool(item)
+                item:Activate()
+            end
+        end
+    end
+end
 
-TextLabel.Parent = ScreenGui
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 0.970
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0, 0, 0.0591098741, 0)
-TextLabel.Size = UDim2.new(0, 391, 0, 111)
-TextLabel.Font = Enum.Font.Bangers
-TextLabel.Text = "BLACKLISTED FAGGOT"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextSize = 30.000
-
-TextLabel_2.Parent = ScreenGui
-TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_2.BackgroundTransparency = 1.000
-TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.BorderSizePixel = 0
-TextLabel_2.Position = UDim2.new(0.625740528, 0, 0.0990959629, 0)
-TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
-TextLabel_2.Font = Enum.Font.LuckiestGuy
-TextLabel_2.Text = "KEY IS PATHETIC BITCH"
-TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_2.TextSize = 20.000
-
-TextBox.Parent = ScreenGui
-TextBox.BackgroundColor3 = Color3.fromRGB(155, 151, 152)
-TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.BorderSizePixel = 0
-TextBox.Position = UDim2.new(0.351007104, 0, 0.347705126, 0)
-TextBox.Size = UDim2.new(0, 291, 0, 51)
-TextBox.Font = Enum.Font.PermanentMarker
-TextBox.Text = "INPUT THE KEY FUCKER"
-TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.TextSize = 28.000
-
-UICorner.Parent = TextBox
-
-TextButton.Parent = ScreenGui
-TextButton.BackgroundColor3 = Color3.fromRGB(155, 151, 152)
-TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.390995264, 0, 0.472878993, 0)
-TextButton.Size = UDim2.new(0, 200, 0, 50)
-TextButton.Font = Enum.Font.LuckiestGuy
-TextButton.Text = "SUBMIT"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextSize = 28.000
-
-UICorner_2.Parent = TextButton
-
-TextLabel_3.Parent = ScreenGui
-TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel_3.BackgroundTransparency = 1.000
-TextLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_3.BorderSizePixel = 0
-TextLabel_3.Position = UDim2.new(0.390995264, 0, 0.0121696796, 0)
-TextLabel_3.Size = UDim2.new(0, 200, 0, 50)
-TextLabel_3.Font = Enum.Font.Arcade
-TextLabel_3.Text = "H3LL ONTOP"
-TextLabel_3.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel_3.TextSize = 50.000
+-- Create the Start Button
+local StartButton = Instance.new("TextButton")
+StartButton.Size = UDim2.new(0, 100, 0, 50)
+StartButton.Position = UDim2.new(1, 10, 0, 0) -- Position it to the right side of ScreenGui
+StartButton.BackgroundColor3 = Color3.fromRGB(0, 128, 0)
+StartButton.Text = "Start"
+StartButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+StartButton.Font = Enum.Font.SourceSans
+StartButton.TextSize = 24
+StartButton.Parent = Frame
+StartButton.Active = true
+StartButton.Draggable = true
+-- Start the auto consume when the button is clicked
+StartButton.MouseButton1Click:Connect(function()
+    if StartButton.Text == "Start" then
+        StartButton.Text = "Running..."
+        autoConsumeBoosts()
+    else
+        StartButton.Text = "Start"
+        -- Add logic to stop the autoConsumeBoosts function if needed
+    end
+end)
